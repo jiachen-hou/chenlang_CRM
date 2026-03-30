@@ -24,11 +24,11 @@ export default function Login() {
       } else {
         const { error } = await supabase.auth.signUp({ email, password });
         if (error) throw error;
-        alert('Registration successful! Please check your email to verify your account, or log in if email verification is disabled.');
+        alert('注册成功！请检查您的邮箱以验证账户。如果禁用了邮箱验证，请直接登录。');
         setIsLogin(true);
       }
     } catch (err: any) {
-      setError(err.message || 'An error occurred during authentication.');
+      setError(err.message || '认证过程中发生错误。');
     } finally {
       setLoading(false);
     }
@@ -39,7 +39,7 @@ export default function Login() {
       <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-xl shadow-md border border-gray-100">
         <div>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            {isLogin ? 'Sign in to your account' : 'Create a new account'}
+            {isLogin ? '登录您的账户' : '创建新账户'}
           </h2>
         </div>
         <form className="mt-8 space-y-6" onSubmit={handleAuth}>
@@ -54,7 +54,7 @@ export default function Login() {
                 type="email"
                 required
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="Email address"
+                placeholder="邮箱地址"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -64,7 +64,7 @@ export default function Login() {
                 type="password"
                 required
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="Password"
+                placeholder="密码"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
@@ -80,7 +80,7 @@ export default function Login() {
               <span className="absolute left-0 inset-y-0 flex items-center pl-3">
                 {isLogin ? <LogIn className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" /> : <UserPlus className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" />}
               </span>
-              {loading ? 'Processing...' : isLogin ? 'Sign in' : 'Sign up'}
+              {loading ? '处理中...' : isLogin ? '登录' : '注册'}
             </button>
           </div>
         </form>
@@ -90,7 +90,7 @@ export default function Login() {
             onClick={() => setIsLogin(!isLogin)}
             className="text-sm text-indigo-600 hover:text-indigo-500"
           >
-            {isLogin ? "Don't have an account? Sign up" : 'Already have an account? Sign in'}
+            {isLogin ? "还没有账户？点击注册" : '已有账户？点击登录'}
           </button>
         </div>
       </div>
