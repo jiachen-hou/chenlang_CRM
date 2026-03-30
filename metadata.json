@@ -1,0 +1,5 @@
+{
+  "name": "Supabase CRM",
+  "description": "A customer relationship management system with visit journeys, powered by Supabase.",
+  "requestFramePermissions": []
+}
